@@ -3,11 +3,13 @@ A simple app for creating and discovering musical jams to play in or attend.
 
 This was a quick project where I focused most of my effort on developing the backend API. Thus, very little styling or work was done on the front end over and above what was needed for the core functionality of the application. I implemented both some unit and end-to-end tests to showcase how they could be done. However, given more time, the next thing I would do would be to get test coverage as close to 100% as possible. For some other possible next steps, please see the Future Work section below.
 
+This project is fully containerized using Docker.
+
 ## First Time Operation Instructions
 1. Clone or download this repository to your favourite directory
-2. From the project root, navigate to the `/jam-app` directory
+2. From the project root, navigate to the `/music-jam-app/jam-app` directory
 3. Run `npm install`
-4. Navigate back to project root
+4. Navigate back to the `/music-jam-app` directory
 5. Run `docker-compose build`
 6. Run `docker-compose up`
 7. In your browser, navigate to `http://192.168.99.100:3000`
@@ -24,10 +26,10 @@ Once you have the project running, you can signup and begin to test the function
     - A user may only join a jam as either a player or an attendee, not both
     - A user is only given the option to join a jam if they have a band role that the jam requires and which has not been filled by another user yet
 
-Given the above rules, you will have to coordinate several different users to fully test the functionality of the application. The vairous buttons and links which allow the above actions to be executed are only shown if the accompanying conditions are met. Thus, if you do not see the option for executing a particular action on a jam, it is probably because some condition is not being met which that action required to be available. If you run into any other questions regarding functionality, the code is fully documented and should provide the answers.
+Given the above rules, you will have to coordinate several different users to fully test the functionality of the application. The vairous buttons and links which allow the above actions to be executed are only shown if the accompanying conditions are met. Thus, if you do not see the option for executing a particular action on a jam, it is probably because some condition is not being met which that action required to be available. If you run into any other questions regarding functionality, the code is fully documented and could provide the answers.
 
 ## Running Unit and End-To-End Tests
-1. From project root, navigate to the `jam-app` directory
+1. From project root, navigate to the `/music-jam-app/jam-app` directory
 2. For unit tests, run `npm run test:unit`
 3. For end-to-end tests, run `npm run test:e2e`
 4. Testing output should be printed to the console
