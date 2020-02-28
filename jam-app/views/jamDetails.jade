@@ -1,0 +1,64 @@
+extends layout
+
+block content
+    p (Logged in as #{loggedInUserName})   
+        a(href="/users/logout") Logout
+    h1= title
+    p <b>Jam Title:</b> #{jamItem.title}
+    p <b>Jam Status:</b> #{jamItem.status}
+    p <b>Venue Location:</b> #{jamItem.venueLocation}
+    p <b>Based on Song:</b> #{jamItem.basedOnSong}
+    p <b>Start Time:</b> #{jamItem.startTime}
+    p <b>End Time:</b> #{jamItem.endTime}
+    p <b>Required Roles:</b> #{jamItem.requiredRoles}
+    p <b>Number of Performers:</b> #{jamItem.performerIds ? jamItem.performerIds.length : 0}
+    p <b>Number of Attendees:</b> #{jamItem.attendeeIds ? jamItem.attendeeIds.length : 0}
+    p <b>Jam Host:</b> #{jamItem.User.userName}
+    p <b>Listing Created At:</b> #{new Date(jamItem.createdAt).toDateString()}
+  
+    if jamItem.status === 'PENDING'
+        if isHost
+            if jamItem.requiredRoles.length === jamItem.filledRoles.length
+                div
+                    form(METHOD='POST' action='/jams/#{jamItem.id}/start')
+                        button(type='submit') Start This Jam
+            div
+                    form(METHOD='POST' action='/jams/#{jamItem.id}/delete')
+                        button(type='submit') Cancel This Jam
+        else
+            if !hasJoinedAsPlayer && !hasJoinedAsAttendee && jamItem.status === 'PENDING'
+                if canJoinAsPlayer
+                    <hr>
+                    div
+                        form(METHOD='POST' action='/jams/#{jamItem.id}/join?joinType=PLAYER')
+                            div.form-group
+                                label(for='chosenRole') Want to play in this jam? Pick the role you would like to fill:
+                                p
+                                    select(id='chosenRole' name='chosenRole' required)
+                                        each role, i in possibleRoles
+                                            option(value='#{role}') #{role}
+                            button(type='submit') Join as a Player
+                <hr>
+                div
+                    p Want to spectate this jam? Join as an attendee:
+                    form(METHOD='POST' action='/jams/#{jamItem.id}/join?joinType=ATTENDEE')
+                        button(type='submit') Join as an Attendee
+            else
+                <hr>
+                div
+                    p You have joined this jam as #{hasJoinedAsPlayer ? 'a player' : 'an attendee'}
+                    form(METHOD='POST' action='/jams/#{jamItem.id}/leave')
+                        button(type='submit') Leave This Jam
+
+        p
+            a(href="/jams/pending") Back to Pending Jam List
+    else if jamItem.status === 'ACTIVE'
+        if isHost
+            div
+                form(METHOD='POST' action='/jams/#{jamItem.id}/end')
+                    button(type='submit') End This Jam
+        p
+            a(href="/jams/active") Back to Active Jam List
+    else
+        p
+            a(href="/jams/past") Back to Past Jam List

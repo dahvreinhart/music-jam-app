@@ -1,0 +1,9 @@
+  
+const path = require('path');
+
+module.exports = {
+  "config": path.resolve('./jam-app/config', 'config.json'),
+  "models-path": path.resolve('./jam-app/models'),
+  "seeders-path": path.resolve('./jam-app/seeders'),
+  "migrations-path": path.resolve('./jam-app/migrations')
+};

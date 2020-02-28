@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  p (Logged in as #{loggedInUserName})   
+    a(href="/users/logout") Logout
+  h1= title
+  p
+    a(href="/jams/create") Create New Jam
+  p
+    a(href="/jams/pending") View Pending Jams
+  p
+    a(href="/jams/active") View Currently Active Jams
+  p
+    a(href="/jams/past") View Past Jams
+  div
+  table
+    thead
+      tr
+        th.table-item Jam Title
+        th.table-item Venue Location
+        th.table-item Based on Song
+        th.table-item Start Time
+    tbody
+      each jam, i in jamItems
+        tr
+          td.table-item #{jam.title}
+          td.table-item #{jam.venueLocation}
+          td.table-item #{jam.basedOnSong}
+          td.table-item #{jam.startTime}
+          td
+            a(href="/jams/#{jam.id}/detail") View More Details

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  p (Logged in as #{loggedInUserName})   
+    a(href="/users/logout") Logout
+  h1= title
+  div
+  table
+    thead
+      tr
+        th.table-item User Name &nbsp&nbsp
+        th.table-item Band Role &nbsp&nbsp
+        th.table-item Number of Past Jams Played &nbsp&nbsp
+    tbody
+      each user, i in userItems
+        tr
+          td.table-item #{user.userName}
+          td.table-item #{user.bandRole}
+          td.table-item #{user.pastJamIds ? user.pastJamIds.length : 0}

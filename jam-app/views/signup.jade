@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+  div
+    form(METHOD='POST' action='/users')
+        div.form-group
+            label(for='userName') User Name
+            p
+                input(type='text', id='userName' placeholder='e.g. GuitarHero1' name='userName' required)
+        div.form-group
+            label(for='bandRole') Your Possible Band Roles (ctrl+click to select multiple)
+            p
+                select(id='bandRole' name='bandRole' multiple required)
+                    option(value='LEAD VOCALS') LEAD VOCALS
+                    option(value='BACKUP VOCALS') BACKUP VOCALS
+                    option(value='PERCUSSION') PERCUSSION
+                    option(value='BASS') BASS
+                    option(value='RHYTHM GUITAR') RHYTHM GUITAR
+                    option(value='LEAD GUITAR') LEAD GUITAR
+                    option(value='STRINGS') STRINGS
+                    option(value='HORNS') HORNS
+                    option(value='WOODWINDS') WOODWINDS
+                    option(value='ELECTRONIC SOUNDS') ELECTRONIC SOUNDS
+        div.form-group
+            label(for='password') Password
+            p
+                input(type='password', id='password' name='password' required)
+        button(type='submit') Sign Up

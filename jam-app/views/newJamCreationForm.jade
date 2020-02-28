@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    p (Logged in as #{loggedInUserName})   
+        a(href="/users/logout") Logout
+    h1= title
+    div
+        form(METHOD='POST' action='/jams')
+            div.form-group
+                label(for='title') Title
+                p
+                    input(type='text', id='title' placeholder='My Awesome New Jam' name='title' required)
+            div.form-group
+                label(for='venueLocation') Address of the Venue
+                p
+                    input(type='text', id='venueLocation' placeholder='1234 Broadway St., New York City' name='venueLocation' required)
+            div.form-group
+                label(for='basedOnSong') Song Inspiration
+                p
+                    input(type='text', id='basedOnSong' placeholder="Bob Marley - I'm Jammin'" name='basedOnSong' required)
+            div.form-group
+                label(for='startTime') Start Time
+                p
+                    input(type='datetime-local', id='startTime' name='startTime' required)
+            div.form-group
+                label(for='endTime') End Time
+                p
+                    input(type='datetime-local', id='endTime' name='endTime' required)
+            div.form-group
+                label(for='requiredRoles') Required Roles (ctrl+click to select multiple)
+                p
+                    select(id='requiredRoles' name='requiredRoles' multiple required)
+                        option(value='LEAD VOCALS') LEAD VOCALS
+                        option(value='BACKUP VOCALS') BACKUP VOCALS
+                        option(value='PERCUSSION') PERCUSSION
+                        option(value='BASS') BASS
+                        option(value='RHYTHM GUITAR') RHYTHM GUITAR
+                        option(value='LEAD GUITAR') LEAD GUITAR
+                        option(value='STRINGS') STRINGS
+                        option(value='HORNS') HORNS
+                        option(value='WOODWINDS') WOODWINDS
+                        option(value='ELECTRONIC SOUNDS') ELECTRONIC SOUNDS
+            button(type='submit') Create

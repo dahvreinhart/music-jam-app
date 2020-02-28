@@ -1,0 +1,13 @@
+{
+  "development": {
+    "use_env_variable": "DB_URL"
+  },
+  "test": {
+    "username": "test",
+    "password": null,
+    "database": "jam-test",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}

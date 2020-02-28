@@ -1,0 +1,41 @@
+version: '3'
+
+networks:
+  jam-net:
+      driver: bridge
+
+services:
+
+  jam-app:
+    build: .
+    container_name: jam-app
+    environment:
+      DB_URL: postgres://postgres:postgres@192.168.99.100:5432/postgres
+    volumes:
+      - ./jam-app:/src/jam-app
+    ports:
+      - "3000:3000"
+    links:
+      - jam-postgres
+    networks:
+      - jam-net
+    depends_on:
+      - jam-postgres
+    restart: always
+
+  jam-postgres:
+    image: "postgres:9.6-alpine"
+    container_name: jam-postgres
+    volumes:
+      - jam-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - jam-net
+
+volumes:
+  jam-data:
