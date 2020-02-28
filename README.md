@@ -14,23 +14,22 @@ This was a quick project where I focused most of my effort on developing the bac
 8. You should see the project homepage with the login form
 
 ## Additional Notes On Operation
+Once you have the project running, you can signup and begin to test the functionality. Most of the app is quite user friendly, although there are some things regarding jam permissions that might be confusing at first. After creating a jam, you can navigate to that jam's detailed information page by clicking the link in the appropriate jam list. Once you are looking at the detailed information page for a jam, there are several things to keep in mind:
 
-    Once you have the project running, you can signup and begin to test the functionality. Most of the app is quite user friendly, although there are some things regarding jam permissions that might be confusing at first. After creating a jam, you can navigate to that jam's detailed information page by clicking the link in the appropriate jam list. Once you are looking at the detailed information page for a jam, there are several things to keep in mind:
+    - Only the host of a jam can start, end or cancel/delete it
+    - A jam may only be started if it in the pending state with all the required roles filled by other users
+    - A jam may only be cancelled if it in the pending state
+    - A jam may only be joined if it is in the pending state
+    - A jam may only be ended if it is in the active state
+    - A user may only join a jam as either a player or an attendee, not both
+    - A user is only given the option to join a jam if they have a band role that the jam requires and which has not been filled by another user yet
 
-        - Only the host of a jam can start, end or cancel/delete it
-        - A jam may only be started if it in the pending state with all the required roles filled by other users
-        - A jam may only be cancelled if it in the pending state
-        - A jam may only be joined if it is in the pending state
-        - A jam may only be ended if it is in the active state
-        - A user may only join a jam as either a player or an attendee, not both
-        - A user is only given the option to join a jam if they have a band role that the jam requires and which has not been filled by another user yet
-    
-    Given the above rules, you will have to coordinate several different users to fully test the functionality of the application. If you run into any other questions regarding functionality, the code is fully documented and should provide the answers.
+Given the above rules, you will have to coordinate several different users to fully test the functionality of the application. The vairous buttons and links which allow the above actions to be executed are only shown if the accompanying conditions are met. Thus, if you do not see the option for executing a particular action on a jam, it is probably because some condition is not being met which that action required to be available. If you run into any other questions regarding functionality, the code is fully documented and should provide the answers.
 
 ## Running Unit and End-To-End Tests
 1. From project root, navigate to the `jam-app` directory
 2. For unit tests, run `npm run test:unit`
-3. For End-To-End tests, run `npm run test:e2e`
+3. For end-to-end tests, run `npm run test:e2e`
 4. Testing output should be printed to the console
 
 ## Future Work I Would Do Next (in no particular order)
@@ -43,7 +42,7 @@ This was a quick project where I focused most of my effort on developing the bac
 - A friends list so users could add each other if they enjoted jamming together
 - 100% unit and e2e test coverage
 - Front end date validation when creating a jam
-- Better global error handling with mroe graceful error messages displayed to the user
+- Better global error handling with more graceful error messages displayed to the user
 - Some intelligence around automatically starting and ending jams based on the initially chosen times
 - Pagination for jam and user lists
 - Collection of emails on signup and the integration of a mailing system to notify users when various actions are taken concerning a jam
